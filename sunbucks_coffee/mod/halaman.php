@@ -26,6 +26,11 @@
 
             case 'tambah-kategori':
                 include 'page/kategori/tambah-kategori.php';
+                break;
+
+            case 'edit-kategori':
+                include 'page/kategori/edit-kategori.php';
+                break;
 
             //pembelian
             case 'pembelian':
