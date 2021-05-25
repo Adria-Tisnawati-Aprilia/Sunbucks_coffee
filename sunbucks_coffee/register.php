@@ -49,27 +49,29 @@ include 'koneksi/koneksi.php';
 
                 $username = $_POST['username'];
                 $password = mysqli_real_escape_string($mysql_object, $_POST['password']);
+                $confirm = mysqli_real_escape_string($mysql_object, $_POST['confirm']);
 
-                $result = $con->query("SELECT username FROM tbl_user WHERE username = '$username' ");
+                $result = $mysql_object->query("SELECT username FROM login WHERE username = '$username' ");
 
                 if (mysqli_fetch_assoc($result) > 0) {
                     echo "<script>alert('Username Sudah Terdaftar');</script>";
                 }
 
-                if ($password !== $confirm_password) {
+                if ($password !== $confirm) {
                     echo "<script>alert('Konfirmasi Password Tidak Sesuai');</script>";
 
                 }
 
                 $password = password_hash($password, PASSWORD_DEFAULT);
-                $query = $con->query("INSERT INTO tbl_user VALUES('', '$username', '$password')");
+                
+                $query = $mysql_object->query("INSERT INTO login VALUES('', '$username', '$password')");
 
                 if ($query != 0) {
                     echo "<script>alert('Berhasil');</script>";
-                    echo "<script>window.location.replace('register.php');</script>";
+                    echo "<script>window.location.replace('login.php');</script>";
                 } else {
                     echo "<script>alert('Gagal');</script>";
-                    echo "<script>window.location.replace('register.php');</script>";
+                    echo "<script>window.location.replace('login.php');</script>";
                 }
             }
 

@@ -11,7 +11,7 @@
 
     switch ($page) {
         case 'dashboard':
-            include 'page/dashboard.php';
+            include 'page/dashboard.html';
             break;
 
             //produk
@@ -24,12 +24,24 @@
                 include 'page/kategori/data_kategori.php';
                 break;
 
+            case 'tampil' :
+                include 'page/kategori/tampil.php';
+                break;
+
+            case 'insert':
+                include 'page/kategori/insert.php';
+                break;
+
             case 'tambah-kategori':
                 include 'page/kategori/tambah-kategori.php';
                 break;
 
             case 'edit-kategori':
                 include 'page/kategori/edit-kategori.php';
+                break;
+
+            case 'menu';
+                include 'page/menu.php';
                 break;
 
             //pembelian

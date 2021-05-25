@@ -31,7 +31,7 @@ include 'koneksi/koneksi.php';
         <tr>
             <td>password </td>
             <td>:</td>
-            <td><input type="text" name="password"></td>
+            <td><input type="password" name="password"></td>
         </tr>
         <tr>
             <td><button name="btn-submit" type="submit">submit</button></td>
@@ -47,8 +47,9 @@ include 'koneksi/koneksi.php';
             $result = $mysql_object->query("SELECT * FROM login WHERE username = '$username' ");
 
             if (mysqli_num_rows($result) > 0) {
-                
-                if (password_verify($password, $result['password'])) {
+                $data = mysqli_fetch_assoc($result);
+
+                if (password_verify($password, $data['password'])) {
 
                     $_SESSION['login'] = true;
                     $_SESSION['username'] = $data['username'];
